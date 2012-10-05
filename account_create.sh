@@ -28,7 +28,7 @@ do
     }')"
 
     STUDENT_NUMBER="$(echo $LINE | awk -F "," '{
-    print $2
+        print $2
     }')"
 
     USERNAME="$(echo $LINE | awk -F "," '{
@@ -40,7 +40,7 @@ do
     if [ "$USER_EXISTS" -ne "0" ] ; then
         # USER EXISTS, CHANGE PASSWORD
         echo "$USERNAME:$PASSWORD" | chpasswd
-else
+    else
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
         adduser -q $USERNAME
