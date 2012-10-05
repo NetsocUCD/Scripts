@@ -1,8 +1,21 @@
 #!/bin/bash
 
 MAIL_POSTFIX="@ucdconnect.ie"
-IN_FILE="test.csv"
-LINE="sOmeeEPasW0rD,09442961,jacktrick"
+IN_FILE="users.csv"
+
+function email () {
+    SUBJECT="NETSOC ACCOUNT CREATED"
+
+    EMAIL= STUDENT_NUMBER+=MAIL_POSTFIX
+
+    EMAILMESSAGE="email.txt"
+
+    echo "Your account was created"> $EMAILMESSAGE
+    echo "Username: $USERNAME" >>$EMAILMESSAGE
+    echo "Password: $PASSWORD" >>$EMAILMESSAGE
+
+    /usr/bin/mail -s "$SUBJECT" "$EMAIL" < $EMAILMESSAGE
+}
 
 while read LINE
 do
@@ -27,6 +40,7 @@ do
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
         sudo useradd -m -p "$PASSWORD" "$USERNAME"
+        email USERNAME STUDENT_NUMBER PASSWORD
     fi
     echo
 done < $IN_FILE
