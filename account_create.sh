@@ -6,7 +6,7 @@ IN_FILE="users.csv"
 function email () {
     SUBJECT="NETSOC ACCOUNT CREATED"
 
-    EMAIL= STUDENT_NUMBER+=MAIL_POSTFIX
+    EMAIL=$STUDENT_NUMBER$MAIL_POSTFIX
 
     EMAILMESSAGE="email.txt"
 
@@ -40,7 +40,7 @@ do
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
         sudo useradd -m -p "$PASSWORD" "$USERNAME"
-        email USERNAME STUDENT_NUMBER PASSWORD
     fi
+    email $USERNAME $STUDENT_NUMBER $PASSWORD
     echo
 done < $IN_FILE
