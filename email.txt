@@ -1,3 +1,0 @@
-Your account was created
-Username: jackuser
-Password: jackpass
