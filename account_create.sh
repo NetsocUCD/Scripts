@@ -43,13 +43,12 @@ do
     else
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
-        #adduser -q $USERNAME
         useradd -m -p $PASSWORD -s /bin/bash $USERNAME
         #echo "$USERNAME:$PASSWORD" | chpasswd
         mkdir /home/$USERNAME/public_html
         echo "$USERNAME" > /home/$USERNAME/public_html/index.html
         chown -R $USERNAME:$USERNAME /home/$USERNAME
     fi
-    #email $USERNAME $STUDENT_NUMBER $PASSWORD
+    email $USERNAME $STUDENT_NUMBER $PASSWORD
     echo
 done < $IN_FILE
