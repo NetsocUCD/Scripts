@@ -43,7 +43,7 @@ do
     else
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
-        adduser -q $USERNAME
+        #adduser -q $USERNAME
         useradd -m -p $PASSWORD -s /bin/bash $USER
         #echo "$USERNAME:$PASSWORD" | chpasswd
         mkdir /home/$USERNAME/public_html
