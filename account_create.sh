@@ -44,7 +44,7 @@ do
         # USER DOES NOT EXIST, CREATE USER
         echo "Creating user $USERNAME"
         #adduser -q $USERNAME
-        useradd -m -p $PASSWORD -s /bin/bash $USER
+        useradd -m -p $PASSWORD -s /bin/bash $USERNAME
         #echo "$USERNAME:$PASSWORD" | chpasswd
         mkdir /home/$USERNAME/public_html
         echo "$USERNAME" > /home/$USERNAME/public_html/index.html
