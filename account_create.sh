@@ -21,20 +21,8 @@ function email () {
     /usr/bin/mail -s "$SUBJECT" "$EMAIL" < $EMAILMESSAGE
 }
 
-while read LINE
+while IFS=, read PASSWORD STUDENT_NUMBER USERNAME
 do
-    PASSWORD="$(echo $LINE | awk -F "," '{
-        print $1
-    }')"
-
-    STUDENT_NUMBER="$(echo $LINE | awk -F "," '{
-        print $2
-    }')"
-
-    USERNAME="$(echo $LINE | awk -F "," '{
-        print $3
-    }')"
-
     USER_EXISTS=$(grep -c "^${USERNAME}:" /etc/passwd)
 
     if [ "$USER_EXISTS" -ne "0" ] ; then
